@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>5ire介绍与部署以及其能带给普通人什么 | p0phday's Blog</title><meta name="author" content="@飞禽岛少年"><meta name="copyright" content="@飞禽岛少年"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="5ire介绍与MCP部署以及其能带给普通人什么 都快2026年，我不希望还有人不知道mcp服务和5ire  5ire是一款开源的跨平台大模型桌面客户端，旨在为用户提供便捷的本地向量知识库管理和大模型交互功能。该软件支持多种文档格式的解析和向量化存储，具备强大的检索增强生成（RAG）能力。此外，5ire还提供使用分析、提示词库、书签和快速关键词搜索等功能，帮助用户更高效地管理和利用大模型资源。  一">
+<meta property="og:type" content="website">
+<meta property="og:title" content="5ire介绍与部署以及其能带给普通人什么">
+<meta property="og:url" content="https://p0phday.github.io/2054/11/01/5ire/index.html">
+<meta property="og:site_name" content="p0phday&#39;s Blog">
+<meta property="og:description" content="5ire介绍与MCP部署以及其能带给普通人什么 都快2026年，我不希望还有人不知道mcp服务和5ire  5ire是一款开源的跨平台大模型桌面客户端，旨在为用户提供便捷的本地向量知识库管理和大模型交互功能。该软件支持多种文档格式的解析和向量化存储，具备强大的检索增强生成（RAG）能力。此外，5ire还提供使用分析、提示词库、书签和快速关键词搜索等功能，帮助用户更高效地管理和利用大模型资源。  一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p0phday.github.io/img/head.jpg">
+<meta property="article:published_time" content="2054-11-01T00:48:26.000Z">
+<meta property="article:modified_time" content="2025-11-01T07:10:33.239Z">
+<meta property="article:author" content="@飞禽岛少年">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p0phday.github.io/img/head.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/head.jpg"><link rel="canonical" href="https://p0phday.github.io/2054/11/01/5ire/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '5ire介绍与部署以及其能带给普通人什么',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'codes'
+}</script><meta name="generator" content="Hexo 8.1.0"></head><body><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">p0phday's Blog</span></a></span><div id="menus"></div></nav><div id="page-site-info"><h1 id="site-title">5ire介绍与部署以及其能带给普通人什么</h1></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="5ire介绍与MCP部署以及其能带给普通人什么"><a href="#5ire介绍与MCP部署以及其能带给普通人什么" class="headerlink" title="5ire介绍与MCP部署以及其能带给普通人什么"></a>5ire介绍与MCP部署以及其能带给普通人什么</h1><blockquote>
+<p>都快2026年，我不希望还有人不知道mcp服务和5ire</p>
+</blockquote>
+<p>5ire是一款开源的跨平台大模型桌面客户端，旨在为用户提供便捷的本地向量知识库管理和大模型交互功能。该软件支持多种文档格式的解析和向量化存储，具备强大的检索增强生成（RAG）能力。此外，5ire还提供使用分析、提示词库、书签和快速关键词搜索等功能，帮助用户更高效地管理和利用大模型资源。</p>
+<p><img src="https://5ireai.com/hero.png" alt="5ire"></p>
+<h2 id="一、什么是mcp服务"><a href="#一、什么是mcp服务" class="headerlink" title="一、什么是mcp服务"></a>一、什么是mcp服务</h2><p>MCP 是一个开放协议，它为应用程序向 LLM 提供上下文的方式进行了标准化。你可以将 MCP 想象成 AI 应用程序的 USB-C 接口。就像 USB-C 为设备连接各种外设和配件提供了标准化的方式一样，MCP 为 AI 模型连接各种数据源和工具提供了标准化的接口。</p>
+<p><strong>说白话：通过MCP协议，我们可以让大模型操控我们的电脑，从而降低我们的工作量</strong></p>
+<h2 id="二、如何使用MCP协议？"><a href="#二、如何使用MCP协议？" class="headerlink" title="二、如何使用MCP协议？"></a>二、如何使用MCP协议？</h2><p>通过MCP协议使ai大模型可以从你计算机的文件系统中读取、写入新文件、移动文件，甚至搜索文件，当然功能远不止这些。</p>
+<ol>
+<li><p>安装最新版Cherry Studio<br> 首先确保你使用的是支持MCP的Cherry Studio最新版本：</p>
+<p> 访问Cherry Studio官网下载最新版本(v1.1.14或更高)</p>
+<p> 根据你的操作系统选择对应安装包：</p>
+<p> Windows: .exe安装文件<br> macOS: .dmg安装包<br> Linux: AppImage格式</p>
+</li>
+<li><p>了解MCP传输协议类型<br> Cherry Studio支持多种MCP传输协议类型，主要包括：</p>
+<p> STDIO：通过标准输入&#x2F;输出与MCP服务器通信，需要本地环境支持<br> HTTP：通过HTTP协议与MCP服务器通信，支持本地或远程服务器<br> SSE：基于Server-Sent Events的流式通信，适用于需要实时更新的场景</p>
+<p> 初学者建议从HTTP类型开始，配置最为简单。</p>
+</li>
+<li><p>环境配置（STDIO类型需要）<br> 如果你计划使用STDIO类型的MCP服务器，需要先完成以下环境配置：<br> Windows环境配置</p>
+<p> 打开Cherry Studio，点击右下角的「设置」图标<br> 找到「MCP环境」选项<br> 点击「安装uv」和「安装bun」按钮 (一般为红色三角)<br> 等待安装完成，状态显示为「已安装」即可</p>
+<p> <img src="https://pic1.imgdb.cn/item/6905af953203f7be00bf078d.png"></p>
+</li>
+<li><p>使用mcp</p>
+<p> 打开 Cherry Studio 设置。<br> 找到 MCP 服务器 选项。<br> 点击 添加服务器。<br> 将 MCP Server 的相关参数填入（参考链接）。可能需要填写的内容包括：<br> 名称：自定义一个名称，例如 fetch-server</p>
+<p> 类型：选择 STDIO</p>
+<p> 命令：填写 uvx</p>
+<p> 参数：填写 mcp-server-fetch</p>
+<p> （可能还有其他参数，视具体 Server 而定）<br> <img src="https://docs.cherry-ai.com/~gitbook/image?url=https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%252F0Ut5BptC3t8CtSU1UWpM%252Fuploads%252F8hXZbcfh0sY9DaQ9HdqF%252Fimage.png?alt=media&token=1f49d9fc-0b62-4cb7-9520-125adfd6aaa0&width=400&dpr=3&quality=100&sign=f3112595&sv=2"></p>
+<p> 完成上述配置后，Cherry Studio 会自动下载所需的 MCP Server - fetch server。下载完成后，我们就可以开始使用了！注意：当 mcp-server-fetch 配置不成功的时候，可以尝试重启一下电脑。</p>
+<p> 在聊天框中启用 MCP 服务</p>
+<p> <img src="https://docs.cherry-ai.com/~gitbook/image?url=https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%252F0Ut5BptC3t8CtSU1UWpM%252Fuploads%252Fgit-blob-96a58008a3a9264d145c1af54cd47dc13e88a90d%252FMCP-%25E8%25BE%2593%25E5%2585%25A5%25E6%25A1%2586%25E6%258C%2589%25E9%2592%25AE%25E7%25A4%25BA%25E4%25BE%258B.png?alt=media&width=400&dpr=3&quality=100&sign=29e4c5b6&sv=2"></p>
+<p> 在 MCP 服务器 设置成功添加了 MCP 服务器</p>
+<p> <img src="https://docs.cherry-ai.com/~gitbook/image?url=https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%252F0Ut5BptC3t8CtSU1UWpM%252Fuploads%252Fgit-blob-1cf4883a7c3cb8d6c087771f24bc50c5e3727c63%252FMCP%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E7%25A4%25BA%25E4%25BE%258B.png?alt=media&width=400&dpr=3&quality=100&sign=d22b87e6&sv=2"></p>
+</li>
+</ol>
+<h2 id="三、为什么是5ire？"><a href="#三、为什么是5ire？" class="headerlink" title="三、为什么是5ire？"></a>三、为什么是5ire？</h2><ul>
+<li>本地优先、隐私友好：向量库和检索可以在本地或企业内网运行，敏感数据不必全部发到云端，合规更放心。  </li>
+<li>强大的 RAG 能力：能把本地文档、笔记和网络资源变成向量，结合大模型做检索增强生成，回答更准确、上下文更贴合。  </li>
+<li>易用性高：提供桌面客户端、图形界面和常用导入工具，非专业用户也能快速上手。  </li>
+<li>成本可控：可以优先用本地模型或按需调用云模型，避免高频 API 账单。  </li>
+<li>跨平台与扩展：支持 Windows&#x2F;macOS&#x2F;Linux，生态可扩展，方便接入第三方插件或企业系统。  </li>
+<li>与 MCP 协同：原生支持 MCP 协议，能把本地能力标准化地暴露给其它 AI 应用，形成统一的上下文和策略管理。  </li>
+<li>适合个人与小团队：对个人用户是生产力工具，对小团队可以快速搭建内部知识库与智能助手，提升效率。</li>
+</ul>
+<p><strong>当然我的原因是单纯它好看</strong></p>
+<h2 id="四、MCP能给我们普通人带来什么"><a href="#四、MCP能给我们普通人带来什么" class="headerlink" title="四、MCP能给我们普通人带来什么"></a>四、MCP能给我们普通人带来什么</h2><ul>
+<li>节省重复劳动：自动写邮件、生成会议纪要、整理文档摘要，把每天重复的文字工作交给助手处理。  </li>
+<li>更快找到信息：把电脑里的文档、笔记、聊天记录连起来，问一句就能快速定位并给出答案，不用翻一堆文件夹。  </li>
+<li>办公更聪明：生成表格模版、写报告结构、给PPT起标题、提炼要点，减少卡在格式和表达上的时间。  </li>
+<li>学习与创作助手：做读书笔记、生成练习题、润色文章和创意写作都更方便。  </li>
+<li>无障碍与辅助：对视力或行动不便的人，语音+MCP能让电脑成为更好用的个人助理。  </li>
+<li>隐私可控：可以只授权某些文件夹给本地模型或 MCP，重要信息不必上传到第三方云上。  </li>
+<li>小团队协作：把常用模板、FAQ、操作手册接入 MCP，团队成员能共享同一套智能检索与回复逻辑，降低新人成本。</li>
+</ul>
+<p>简单可试的三个场景：</p>
+<ol>
+<li>自动生成会议纪要：把会议录音或笔记丢给 5ire&#x2F;Cherry Studio，自动提炼出要点与行动项。  </li>
+<li>私有知识问答：把公司文档导入向量库，本地问答助手能直接从公司资料中回答问题。  </li>
+<li>文件批量处理：让 MCP 帮你按规则重命名、分类或生成摘要，省时省力。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://p0phday.github.io">@飞禽岛少年</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://p0phday.github.io/2054/11/01/5ire/">https://p0phday.github.io/2054/11/01/5ire/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://p0phday.github.io" target="_blank">p0phday's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/head.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav id="pagination"><div class="pagination"></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">@飞禽岛少年</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/p0phday"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2054/11/01/5ire/" title="5ire介绍与部署以及其能带给普通人什么">5ire介绍与部署以及其能带给普通人什么</a><time datetime="2054-11-01T00:48:26.000Z" title="发表于 2054-11-01 08:48:26">2054-11-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/31/hello-world/" title="Hello World">Hello World</a><time datetime="2025-10-31T01:47:19.814Z" title="发表于 2025-10-31 09:47:19">2025-10-31</time></div></div></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2054/11/">
+            <span class="card-archive-list-date">
+              十一月 2054
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-11-01T07:10:40.697Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2025 By @飞禽岛少年</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
